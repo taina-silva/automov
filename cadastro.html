@@ -17,19 +17,33 @@
         <div class="form-container">
             <form>
                 <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" required />
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$"
+                        title="Formato válido: XXX.XXX.XXX-XX" required />
+                </div>
+                <div class="form-group">
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" required />
                 </div>
                 <div class="form-group">
                     <label for="senha">Senha:</label>
-                    <input type="password" id="senha" required />
+                    <input type="password" id="senha" minlength="6" required />
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" pattern="^\d+$" title="O telefone deve conter apenas números."
+                        required />
                 </div>
                 <button type="submit" class="btn btn-block mt-2">
-                    Login
+                    Cadastrar
                 </button>
                 <div id="link">
-                    <a href="cadastro.html">
-                        Não possui uma conta? Cadastre-se.
+                    <a href="login.html">
+                        Já possui uma conta? Faça login.
                     </a>
                 </div>
             </form>

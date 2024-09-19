@@ -37,6 +37,18 @@ form {
   width: 70%;
 }
 
+#link {
+  width: 100%;
+  margin-top: 0.5rem;
+  text-align: end;
+  cursor: pointer;
+}
+
+#link a {
+  color: #343a40;
+  text-decoration: none;
+}
+
 @media (max-width: 600px) {
   main {
     flex-direction: column;
