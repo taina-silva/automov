@@ -1,6 +1,8 @@
-function generateStaticVehicleCards(numCards) {
-  console.log("here");
+window.onload = function () {
+  generateStaticVehicleCards(4);
+};
 
+function generateStaticVehicleCards(numCards) {
   const cardHTML = `
             <div class="card-item">
                 <div class="card">
@@ -21,6 +23,7 @@ function generateStaticVehicleCards(numCards) {
   }
 }
 
-window.onload = function () {
-  generateStaticVehicleCards(4);
-};
+const loginButton = document.getElementById("go-to-login-button");
+loginButton.addEventListener("click", function () {
+  window.location.href='login.html';
+});
