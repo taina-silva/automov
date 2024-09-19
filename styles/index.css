@@ -64,6 +64,24 @@
   margin: 0.25rem 0;
 }
 
+.go-to-login-container {
+  display: flex;
+  align-items: end;
+}
+
+a {
+  margin-right: 12px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .card-item {
+    flex: 0 calc(33.333% - 1rem);
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     width: 100%;
