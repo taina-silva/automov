@@ -1,15 +1,15 @@
 function generateStaticVehicleCards(numCards) {
-    console.log('here')
+  console.log("here");
 
   const cardHTML = `
-            <div class="col mb-4">
+            <div class="card-item">
                 <div class="card">
-                    <img src="./assets/images/car.png" class="card-img-top" alt="Carro" />
+                    <img src="./assets/images/car.png" class="card-img" alt="Carro" />
                     <div class="card-body">
                         <h5 class="card-title">Ford Fiesta</h5>
-                        <p class="card-text">Ano: 2018</p>
-                        <p class="card-text">Cidade: São Paulo</p>
-                        <p class="card-text">Preço: R$ 45.000</p>
+                        <p class="card-text"><b>Ano:</b> 2018</p>
+                        <p class="card-text"><b>Cidade:</b> São Paulo</p>
+                        <p class="card-text"><b>Preço:</b> R$ 45.000</p>
                     </div>
                 </div>
             </div>`;
@@ -21,6 +21,6 @@ function generateStaticVehicleCards(numCards) {
   }
 }
 
-window.onload = function() {
-    generateStaticVehicleCards(4); 
+window.onload = function () {
+  generateStaticVehicleCards(4);
 };
