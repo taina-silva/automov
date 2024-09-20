@@ -1,8 +1,8 @@
 Vehicle Advertising Portal - PPI
 
-- [ ] 2.1 Página Principal Externa (pública)
-- [ ] 2.2 Página de Cadastro de Usuário (pública)
-- [ ] 2.3 Página de Login (pública)
+- [X] 2.1 Página Principal Externa (pública)
+- [X] 2.2 Página de Cadastro de Usuário (pública)
+- [X] 2.3 Página de Login (pública)
 - [ ] 2.4 Página de Registro de Interesse no Veículo Anunciado (pública)
 - [ ] 2.5 Página Principal Interna (restrita)
 - [ ] 2.6 Página para Criação de Anúncio de Veículo (restrita)
