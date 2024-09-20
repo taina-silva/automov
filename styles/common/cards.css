@@ -1,0 +1,44 @@
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+  justify-content: space-between;
+}
+
+.card-item {
+  flex: 1 1 100%;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.card-text {
+  margin: 0.25rem 0;
+}
+
+@media (min-width: 768px) {
+  .card-item {
+    flex: 0 1 30%;
+  }
+}
