@@ -1,0 +1,82 @@
+.go-to-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.go-to-login-container a {
+  margin-right: 12px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.automov-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.automov-container img {
+  height: 160px;
+}
+
+.automov-details {
+  height: 160px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 1rem;
+}
+
+.automov-details h1 {
+  color: #007bff;
+}
+
+.automov-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.automov-info p {
+  font-size: large;
+  margin-left: 4px;
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-color: #343a4023;
+}
+
+@media (min-width: 768px) {
+  .go-to-login-container {
+    flex-direction: row;
+    align-items: end;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .automov-container {
+    flex-direction: row;
+  }
+
+  .automov-details {
+    align-items: center;
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+
+  .automov-info {
+    justify-content: flex-start;
+  }
+}

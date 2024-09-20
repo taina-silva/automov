@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../styles/common/general.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/common/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/common/form.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/registro-interesse.css" />
+    <title>AutoMov</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <img src="../assets/logo/logo.png" alt="AutoMov" class="logo" />
+            <div class="go-to-login-container">
+                <a href="../pages/login.html">
+                    É anunciante?
+                </a>
+                <button class="btn" onclick="window.location.href='login.html';">
+                    Login
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-card">
+            <div class="automov-container">
+                <img src="../assets/images/car.png" alt="Car" />
+                <div class="automov-details">
+                    <h1 class="card-title">Ford Fiesta</h1>
+                    <div>
+                        <div class="automov-info">
+                            <h3>Ano:</h3>
+                            <p>2018</p>
+                        </div>
+                        <div class="automov-info">
+                            <h3>Cidade:</h3>
+                            <p>São Paulo</p>
+                        </div>
+                        <div class="automov-info">
+                            <h3>Preço:</h3>
+                            <p>R$ 45.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h3 class="text-center">Registre seu interesse</h3>
+            <form>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" pattern="^\d+$" title="O telefone deve conter apenas números."
+                            required />
+                    </div>
+                    <div>
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" rows="5" cols="40" placeholder="Deixe sua mensagem aqui...."
+                            required></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-block mt-2">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../script.js"></script>
+</body>
+
+</html>

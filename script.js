@@ -1,5 +1,6 @@
 window.onload = function () {
   generateStaticVehicleCards(4);
+  implementInterestButtons();
 };
 
 function generateStaticVehicleCards(numCards) {
@@ -13,6 +14,9 @@ function generateStaticVehicleCards(numCards) {
                         <p class="card-text"><b>Cidade:</b> São Paulo</p>
                         <p class="card-text"><b>Preço:</b> R$ 45.000</p>
                     </div>
+                    <div class="card-footer">
+                        <button class="btn btn-block">Registrar interesse</button>
+                    </div>
                 </div>
             </div>`;
 
@@ -23,7 +27,11 @@ function generateStaticVehicleCards(numCards) {
   }
 }
 
-const loginButton = document.getElementById("go-to-login-button");
-loginButton.addEventListener("click", function () {
-  window.location.href='./pages/login.html';
-});
+function implementInterestButtons() {
+  const interestButtons = document.querySelectorAll(".card-footer .btn");
+  for (var button of interestButtons) {
+    button.onclick = function () {
+      window.location.href="./pages/registro-interesse.html";
+    };
+  }
+}
