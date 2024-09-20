@@ -1,28 +1,24 @@
-.container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
 .go-to-login-container {
   display: flex;
-  align-items: end;
+  flex-direction: column;
+  align-items: center;
 }
 
-a {
+.go-to-login-container a {
   margin-right: 12px;
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-  .container {
-    width: 100%;
-  }
+.card-footer .btn {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 
+@media (min-width: 768px) {
   .go-to-login-container {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: end;
   }
 }
