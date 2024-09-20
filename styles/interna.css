@@ -1,0 +1,34 @@
+.ads-container {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 0 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.internal-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+@media (max-width: 768px) {
+  .internal-card-body {
+    width: 100%;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dropup {
+    width: 100%;
+  }
+
+  .dropup button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

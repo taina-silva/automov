@@ -1,9 +1,9 @@
-.navbar {
+.internal-navbar {
   background-color: #343a40;
   padding: 1rem;
 }
 
-.navbar .container {
+.internal-navbar .internal-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,7 +14,7 @@
 }
 
 @media (max-width: 600px) {
-  .navbar {
+  .internal-navbar {
     padding: 1rem 0;
   }
 }

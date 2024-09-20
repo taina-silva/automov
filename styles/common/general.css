@@ -11,13 +11,13 @@ body {
   color: #343a40;
 }
 
-.container {
+.internal-container {
   width: 80%;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-.btn {
+.internal-btn {
   padding: 0.75rem 1.25rem;
   background-color: #007bff;
   border: none;
@@ -27,16 +27,16 @@ body {
   font-size: 1rem;
 }
 
-.btn:hover {
+.internal-btn:hover {
   background-color: #0056b3;
 }
 
-.btn-block {
+.internal-btn-block {
   display: block;
   width: 100%;
 }
 
-.text-center {
+.internal-text-center {
   text-align: center;
 }
 
@@ -73,7 +73,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  .container {
+  .internal-container {
     width: 100%;
   }
 }

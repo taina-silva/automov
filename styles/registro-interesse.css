@@ -60,7 +60,7 @@ hr {
     align-items: end;
   }
 
-  .form-grid {
+  .internal-form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;

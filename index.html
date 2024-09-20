@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" type="text/css" href="./styles/common/general.css" />
     <link rel="stylesheet" type="text/css" href="./styles/common/navbar.css" />
     <link rel="stylesheet" type="text/css" href="./styles/common/form.css" />
@@ -13,26 +14,26 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container">
+    <nav class="internal-navbar">
+        <div class="internal-container">
             <img src="./assets/logo/logo.png" alt="AutoMov" class="logo" />
             <div class="go-to-login-container">
                 <a href="./pages/login.html">
                     É anunciante?
                 </a>
-                <button class="btn" onclick="window.location.href='./pages/login.html';">
+                <button class="internal-btn">
                     Login
                 </button>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="form-card">
-            <h3 class="text-center">Encontre seu veículo</h3>
+    <div class="internal-container">
+        <div class="internal-form-card">
+            <h3 class="internal-text-center">Encontre seu veículo</h3>
             <form>
-                <div class="form-grid">
-                    <div class="form-group">
+                <div class="internal-form-grid">
+                    <div class="internal-form-group">
                         <label for="marca">Marca</label>
                         <select id="marca">
                             <option value="">Selecione a marca</option>
@@ -41,7 +42,7 @@
                             <option>Fiat</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="internal-form-group">
                         <label for="modelo">Modelo</label>
                         <select id="modelo">
                             <option value="">Selecione o modelo</option>
@@ -50,7 +51,7 @@
                             <option>Palio</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="internal-form-group">
                         <label for="cidade">Localização (Cidade)</label>
                         <select id="cidade">
                             <option value="">Selecione a cidade</option>
@@ -60,18 +61,18 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-block mt-2">
+                <button type="submit" class="internal-btn internal-btn-block mt-2">
                     Buscar
                 </button>
             </form>
         </div>
     </div>
 
-    <div class="container">
-        <div id="cards-container" class="cards-grid"></div>
+    <div class="internal-container">
+        <div id="cards-container" class="internal-cards-grid"></div>
     </div>
 
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="./scripts/index.js"></script>
 </body>
 
 </html>
