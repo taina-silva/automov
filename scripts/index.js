@@ -27,7 +27,7 @@ function generateStaticVehicleCards(numCards) {
 }
 
 function implementInterestButtons() {
-  const interestButtons = document.querySelectorAll(".internal-card-footer .btn");
+  const interestButtons = document.querySelectorAll(".internal-card-footer .internal-btn");
   for (var button of interestButtons) {
     button.onclick = function () {
       window.location.href="./pages/registro-interesse.html";
