@@ -3,9 +3,31 @@ window.onload = function () {
 };
 
 function generateStaticAdsCards(numCards) {
-  const cardHTML = `
-              <div class="internal-card">
-                  <img src="../assets/images/car.png" class="internal-card-img" alt="Carro" />
+  const cardContainer = document.getElementById("cards-container");
+
+  for (let i = 0; i < numCards; i++) {
+    const cardHTML = `
+              <div class="internal-card" id="card-${i}">
+                  <h5 class="internal-ad-title">Anúncio ${i + 1}</h5>
+                  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="../assets/images/car.png" class="d-block w-100">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="../assets/images/car.png" class="d-block w-100">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="../assets/images/car.png" class="d-block w-100">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                  </div>
                   <div class="internal-card-body">
                       <div>
                           <h5 class="internal-card-title">Ford Fiesta</h5>
@@ -19,23 +41,53 @@ function generateStaticAdsCards(numCards) {
                               Opções
                           </button>
                           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropupLeftButton">
-                              <li><a class="dropdown-item" href="#">Visualizar</a></li>
-                              <li><a class="dropdown-item" href="#">Interesses</a></li>
-                              <li><a class="dropdown-item" href="#">Deletar</a></li>
+                              <li><button class="dropdown-item" data-card-index="${i}" data-action="visualizar">Visualizar</button></li>
+                              <li><button class="dropdown-item" data-card-index="${i}" data-action="interesses">Interesses</button></li>
+                              <li><button class="dropdown-item" data-card-index="${i}" data-action="deletar">Deletar</button></li>
                           </ul>
                       </div>
                   </div>
               </div>
             `;
 
-  const cardContainer = document.getElementById("cards-container");
-
-  for (let i = 0; i < numCards; i++) {
     cardContainer.innerHTML += cardHTML;
   }
+}
+
+document.getElementById("cards-container").addEventListener("click", function (event) {
+  if (event.target.classList.contains("dropdown-item")) {
+    const cardIndex = event.target.getAttribute("data-card-index");
+    const action = event.target.getAttribute("data-action");
+
+    if (action === "visualizar") {
+      visualizarCard(cardIndex);
+    } else if (action === "interesses") {
+      mostrarInteresses(cardIndex);
+    } else if (action === "deletar") {
+      deletarCard(cardIndex);
+    }
+  }
+});
+
+function visualizarCard(index) {
+  window.location.href = "anuncio-detalhado.html";
+}
+
+function mostrarInteresses(index) {
+  window.location.href = "lista-interesses.html";
+}
+
+function deletarCard(index) {
+  const cardElement = document.getElementById(`card-${index}`);
+  if (cardElement) cardElement.remove();
 }
 
 const logoutBtn = document.querySelector("#logout-btn");
 logoutBtn.onclick = function () {
   window.location.href = "login.html";
+};
+
+const novoAnunctionBtn = document.querySelector("#novo-anuncio-btn");
+novoAnunctionBtn.onclick = function () {
+  window.location.href = "cria-anuncio-veiculo.html";
 };
