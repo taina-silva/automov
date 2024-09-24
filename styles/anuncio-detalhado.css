@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.anuncio {
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+.anuncio h2 {
+    text-align: center;
+}
+.detalhes {
+    margin-bottom: 20px;
+}
+.fotos {
+    display: flex;
+    justify-content: space-around;
+}
+.fotos img {
+    width: 30%;
+    border-radius: 10px;
+}
