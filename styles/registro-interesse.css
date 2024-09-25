@@ -10,18 +10,21 @@
 }
 
 .automov-details {
-  height: 160px;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   margin-top: 1rem;
 }
 
 .automov-details h1 {
+  font-size: x-large;
   color: #007bff;
+}
+
+.automov-details div {
+  width: 100%;
 }
 
 .automov-info {
@@ -30,15 +33,16 @@
   justify-content: center;
 }
 
+.automov-info h3 {
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
 .automov-info p {
   font-size: large;
   margin-left: 4px;
-}
-
-hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  border-color: #343a4023;
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -53,12 +57,24 @@ hr {
   }
 
   .automov-details {
-    align-items: center;
     margin-top: 0;
     margin-left: 2rem;
   }
 
+  .automov-details h1 {
+    width: 100%;
+    text-align: left;
+  }
+
   .automov-info {
     justify-content: flex-start;
+  }
+
+  .carousel-inner img {
+    height: 320px;
+  }
+
+  #registro-interesse-carousel {
+    width: 50%;
   }
 }

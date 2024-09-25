@@ -40,6 +40,12 @@ body {
   text-align: center;
 }
 
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-color: #343a4023;
+}
+
 .mt-1 {
   margin-top: 1rem;
 }

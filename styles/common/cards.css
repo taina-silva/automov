@@ -29,12 +29,22 @@
 
 .internal-card-title {
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   color: #007bff;
 }
 
 .internal-card-text {
   margin: 0.25rem 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #007bff !important;
+  border-radius: 8px;
+}
+
+.carousel-inner img {
+  height: 200px;
 }
 
 @media (min-width: 768px) {

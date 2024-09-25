@@ -6,46 +6,47 @@ function generateStaticAdsCards(numCards) {
   const cardContainer = document.getElementById("cards-container");
 
   for (let i = 0; i < numCards; i++) {
+    const carouselId = `interna-carousel-${i}`;
     const cardHTML = `
               <div class="internal-card" id="card-${i}">
                   <h5 class="internal-ad-title">Anúncio ${i + 1}</h5>
-                  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                  <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="../assets/images/car.png" class="d-block w-100">
+                        <img src="../assets/images/car-1.png" class="d-block w-100">
                       </div>
                       <div class="carousel-item">
-                        <img src="../assets/images/car.png" class="d-block w-100">
+                        <img src="../assets/images/car-2.png" class="d-block w-100">
                       </div>
                       <div class="carousel-item">
-                        <img src="../assets/images/car.png" class="d-block w-100">
+                        <img src="../assets/images/car-3.png" class="d-block w-100">
                       </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     </button>
                   </div>
                   <div class="internal-card-body">
-                      <div>
-                          <h5 class="internal-card-title">Ford Fiesta</h5>
-                          <p class="internal-card-text"><b>Ano:</b> 2018</p>
-                          <p class="internal-card-text"><b>Cidade:</b> São Paulo</p>
-                          <p class="internal-card-text"><b>Preço:</b> R$ 45.000</p>
-                      </div>
-                      <div class="dropup">
-                          <button class="internal-btn dropdown-toggle" type="button" id="dropupLeftButton"
-                              data-bs-toggle="dropdown" aria-expanded="false">
-                              Opções
-                          </button>
-                          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropupLeftButton">
-                              <li><button class="dropdown-item" data-card-index="${i}" data-action="visualizar">Visualizar</button></li>
-                              <li><button class="dropdown-item" data-card-index="${i}" data-action="interesses">Interesses</button></li>
-                              <li><button class="dropdown-item" data-card-index="${i}" data-action="deletar">Deletar</button></li>
-                          </ul>
-                      </div>
+                    <div>
+                        <h5 class="internal-card-title">Ford Fiesta</h5>
+                        <p class="internal-card-text"><b>Ano:</b> 2018</p>
+                        <p class="internal-card-text"><b>Cidade:</b> São Paulo</p>
+                        <p class="internal-card-text"><b>Preço:</b> R$ 45.000</p>
+                    </div>
+                    <div class="dropup">
+                      <button class="internal-btn dropdown-toggle" type="button" id="dropupLeftButton"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Opções
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropupLeftButton">
+                          <li><button class="dropdown-item" data-card-index="${i}" data-action="detalhes">Ver detalhes</button></li>
+                          <li><button class="dropdown-item" data-card-index="${i}" data-action="interesses">Ver interesses</button></li>
+                          <li><button class="dropdown-item" data-card-index="${i}" data-action="deletar">Deletar</button></li>
+                      </ul>
+                    </div>
                   </div>
               </div>
             `;
@@ -59,8 +60,8 @@ document.getElementById("cards-container").addEventListener("click", function (e
     const cardIndex = event.target.getAttribute("data-card-index");
     const action = event.target.getAttribute("data-action");
 
-    if (action === "visualizar") {
-      visualizarCard(cardIndex);
+    if (action === "detalhes") {
+      detalhesCard(cardIndex);
     } else if (action === "interesses") {
       mostrarInteresses(cardIndex);
     } else if (action === "deletar") {
@@ -69,7 +70,7 @@ document.getElementById("cards-container").addEventListener("click", function (e
   }
 });
 
-function visualizarCard(index) {
+function detalhesCard(index) {
   window.location.href = "anuncio-detalhado.html";
 }
 

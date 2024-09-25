@@ -20,12 +20,6 @@
   padding: 1rem 0 0 1rem;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: #007bff !important;
-  border-radius: 8px;
-}
-
 @media (max-width: 600px) {
   .ads-container {
     width: 100%;

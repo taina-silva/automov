@@ -4,41 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoMov - Detalhes do Anúncio</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../styles/common/general.css" />
-    <link rel="stylesheet" type="text/css" href="../styles/common/navbar.css" />
-    <link rel="stylesheet" href="../styles/anuncio-detalhado.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/common/general.css">
+    <link rel="stylesheet" type="text/css" href="../styles/common/form.css">
+    <link rel="stylesheet" type="text/css" href="../styles/common/navbar.css">
+    <link rel="stylesheet" href="../styles/anuncio-detalhado.css">
+
+    <title>AutoMov - Detalhes do Anúncio</title>
 </head>
 
 <body>
     <nav class="internal-navbar">
         <div class="internal-container">
-            <img src="../assets/logo/logo.png" alt="AutoMov" class="logo" />
+            <img src="../assets/logo/logo.png" alt="AutoMov" class="logo">
             <button id="logout-btn" class="internal-btn">Logout</button>
         </div>
     </nav>
 
-    <div class="anuncio">
-        <h2>Detalhes do Veículo</h2>
-        <div class="detalhes">
-            <p><strong>Marca:</strong> Ford</p>
-            <p><strong>Modelo:</strong> Fiesta</p>
-            <p><strong>Ano de Fabricação:</strong> 2018</p>
-            <p><strong>Cor:</strong> Preto</p>
-            <p><strong>Quilometragem:</strong> 45.000 km</p>
-            <p><strong>Descrição:</strong> Veículo em excelente estado, revisões em dia, único dono.</p>
-            <p><strong>Valor:</strong> R$ 45.000</p>
-            <p><strong>Estado:</strong> MG</p>
-            <p><strong>Cidade:</strong> Belo Horizonte</p>
-        </div>
-        <div class="fotos">
-            <img src="../assets/images/car.png" alt="Foto 1 do veículo">
-            <img src="../assets/images/car.png" alt="Foto 2 do veículo">
-            <img src="../assets/images/car.png" alt="Foto 3 do veículo">
+    <div class="internal-container">
+        <div class="internal-form-card">
+            <h2 class="mb-4 text-center">Detalhes do Veículo</h2>
+            <div class="detalhes">
+                <p><strong>Marca:</strong> Ford</p>
+                <p><strong>Modelo:</strong> Fiesta</p>
+                <p><strong>Ano de Fabricação:</strong> 2018</p>
+                <p><strong>Cor:</strong> Preto</p>
+                <p><strong>Quilometragem:</strong> 45.000 km</p>
+                <p><strong>Descrição:</strong> Veículo em excelente estado, revisões em dia, único dono.</p>
+                <p><strong>Valor:</strong> R$ 45.000</p>
+                <p><strong>Estado:</strong> MG</p>
+                <p><strong>Cidade:</strong> Belo Horizonte</p>
+            </div>
+            <div class="fotos">
+                <img src="../assets/images/car-1.png" alt="Foto 1 do veículo">
+                <img src="../assets/images/car-2.png" alt="Foto 2 do veículo">
+                <img src="../assets/images/car-3.png" alt="Foto 3 do veículo">
+            </div>
         </div>
     </div>
+
+    <script src="../scripts/anuncio-detalhado.js"></script>
 </body>
 
 </html>
