@@ -31,10 +31,9 @@ function generateStaticAdsCards(numCards) {
                   </div>
                   <div class="internal-card-body">
                     <div>
-                        <h5 class="internal-card-title">Ford Fiesta</h5>
+                        <p class="internal-card-text"><b>Marca:</b> Ford</p>
+                        <p class="internal-card-text"><b>Modelo:</b> Fiesta</p>
                         <p class="internal-card-text"><b>Ano:</b> 2018</p>
-                        <p class="internal-card-text"><b>Cidade:</b> São Paulo</p>
-                        <p class="internal-card-text"><b>Preço:</b> R$ 45.000</p>
                     </div>
                     <div class="dropup">
                       <button class="internal-btn dropdown-toggle" type="button" id="dropupLeftButton"
@@ -55,20 +54,22 @@ function generateStaticAdsCards(numCards) {
   }
 }
 
-document.getElementById("cards-container").addEventListener("click", function (event) {
-  if (event.target.classList.contains("dropdown-item")) {
-    const cardIndex = event.target.getAttribute("data-card-index");
-    const action = event.target.getAttribute("data-action");
+document
+  .getElementById("cards-container")
+  .addEventListener("click", function (event) {
+    if (event.target.classList.contains("dropdown-item")) {
+      const cardIndex = event.target.getAttribute("data-card-index");
+      const action = event.target.getAttribute("data-action");
 
-    if (action === "detalhes") {
-      detalhesCard(cardIndex);
-    } else if (action === "interesses") {
-      mostrarInteresses(cardIndex);
-    } else if (action === "deletar") {
-      deletarCard(cardIndex);
+      if (action === "detalhes") {
+        detalhesCard(cardIndex);
+      } else if (action === "interesses") {
+        mostrarInteresses(cardIndex);
+      } else if (action === "deletar") {
+        deletarCard(cardIndex);
+      }
     }
-  }
-});
+  });
 
 function detalhesCard(index) {
   window.location.href = "anuncio-detalhado.html";
