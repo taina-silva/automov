@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Lidar com o logout (simplesmente um exemplo de redirecionamento)
     logoutBtn.addEventListener("click", () => {
-        window.location.href = "login.html"; // Substitua pela rota de logout real
+        window.location.href = "login.html"; 
     });
 
 
