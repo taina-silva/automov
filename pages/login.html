@@ -18,7 +18,7 @@
             <img src="../assets/logo/logo.png" alt="AutoMov" class="logo">
         </div>
         <div class="form-container">
-            <form>
+            <form id="form">
                 <div class="internal-form-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" required>
@@ -28,6 +28,7 @@
                     <input type="password" id="senha" required>
                 </div>
                 <button type="submit" class="internal-btn internal-btn-block mt-2">Login</button>
+                <p id="fail-msg" class="fail-msg"></p>
                 <div class="link">
                     <a href="cadastro.html"> Não possui uma conta? Cadastre-se. </a>
                 </div>

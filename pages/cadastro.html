@@ -18,7 +18,7 @@
             <img src="../assets/logo/logo.png" alt="AutoMov" class="logo">
         </div>
         <div class="form-container">
-            <form>
+            <form id="form">
                 <div class="internal-form-group">
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" required>
@@ -44,6 +44,7 @@
                 <button type="submit" class="internal-btn internal-btn-block mt-2">
                     Cadastrar
                 </button>
+                <p id="fail-msg" class="fail-msg"></p>
                 <div class="link">
                     <a href="login.html">
                         Já possui uma conta? Faça login.
@@ -52,6 +53,8 @@
             </form>
         </div>
     </main>
+
+    <script src="../scripts/cadastro.js"></script>
 
 </body>
 

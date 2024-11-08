@@ -1,3 +1,15 @@
+<?php
+
+require "../php/conexao_sql.php";
+require "../php/verifica-sessao.php";
+
+session_start();
+
+verificarSessao();
+$pdo = conectaSql();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 

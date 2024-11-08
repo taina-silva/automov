@@ -48,6 +48,10 @@ form {
   text-decoration: none;
 }
 
+.fail-msg {
+  color: red;
+}
+
 @media (min-width: 768px) {
   main {
     height: 100vh;

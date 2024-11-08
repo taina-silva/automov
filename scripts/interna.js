@@ -86,7 +86,7 @@ function deletarCard(index) {
 
 const logoutBtn = document.querySelector("#logout-btn");
 logoutBtn.onclick = function () {
-  window.location.href = "login.html";
+  window.location.href = "../php/logout.php";
 };
 
 const novoAnunctionBtn = document.querySelector("#novo-anuncio-btn");
