@@ -1,0 +1,9 @@
+sql
+
+pages: index.html(adequação script de busca)
+
+
+script: Busca.js
+
+
+php:
