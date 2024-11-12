@@ -93,8 +93,8 @@ verificarSessao();
                 <label for="cidade">Cidade:</label>
                 <input type="text" id="cidade" name="cidade" required>
 
-                <label for="fotos">Fotos do veículo (mínimo 3):</label>
-                <input type="file" id="fotos" name="fotos[]" multiple>
+                <label>Selecione os arquivos de imagem: <input type="file" name="arquivos[]" accept=".png, .jpg, .jpeg" multiple></label>
+                <button>Enviar</button>
 
                 <p id="message" class="message"></p>
                 <input type="submit" class="internal-btn mt-4" value="Criar Anúncio">

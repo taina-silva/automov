@@ -27,23 +27,29 @@ function criarAnuncio($pdo, $marca, $modelo, $ano, $cor, $quilometragem, $descri
     }
 }
 
-function salvarFotos($pdo, $idAnuncio, $arquivos)
-{
-    // $diretorio = '../uploads/fotos/';
-    // if (!file_exists($diretorio)) {
-    //     mkdir($diretorio, 0777, true);
-    // }
+function salvarFotos($pdo, $idAnuncio, $arquivos) {
+    $diretorioDestino = 'uploads/';
 
-    // foreach ($arquivos['name'] as $index => $nomeArqFoto) {
-    //     $tempFile = $arquivos['tmp_name'][$index];
-    //     $destino = $diretorio . basename($nomeArqFoto);
+    foreach ($arquivos['name'] as $key => $nomeArquivo) {
+        if ($arquivos['error'][$key] === UPLOAD_ERR_OK) {
+            $caminhoTemporario = $arquivos['tmp_name'][$key];
+            $caminhoDestino = $diretorioDestino . uniqid() . '-' . basename($nomeArquivo);
 
-    //     if (move_uploaded_file($tempFile, $destino)) {
-    //         $stmt = $pdo->prepare("INSERT INTO foto (idAnuncio, nomeArqFoto) VALUES (?, ?)");
-    //         $stmt->execute([$idAnuncio, $nomeArqFoto]);
-    //     }
-    // }
+            if (move_uploaded_file($caminhoTemporario, $caminhoDestino)) {
+                $sql = "INSERT INTO fotos (id_anuncio, caminho) VALUES (:idAnuncio, :caminho)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':idAnuncio', $idAnuncio, PDO::PARAM_INT);
+                $stmt->bindParam(':caminho', $caminhoDestino, PDO::PARAM_STR);
+                $stmt->execute();
+            } else {
+                echo "Erro ao mover o arquivo $nomeArquivo.";
+            }
+        } else {
+            echo "Erro no upload do arquivo $nomeArquivo.";
+        }
+    }
 }
+
 
 $marca = $_POST['marca'] ?? '';
 $modelo = $_POST['modelo'] ?? '';
