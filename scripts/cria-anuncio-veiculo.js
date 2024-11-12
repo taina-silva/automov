@@ -1,37 +1,53 @@
-document.addEventListener("DOMContentLoaded", () => {
+const logoutBtn = document.querySelector("#logout-btn");
+logoutBtn.onclick = function () {
+  window.location.href = "./php/logout.php";
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+  }
+};
 
-    const form = document.querySelector("form");
+document
+  .getElementById("form")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const form = document.getElementById("form");
+    const formData = new FormData(form);
+
     const fotosInput = document.getElementById("fotos");
-    const logoutBtn = document.getElementById("logout-btn");
+    const arquivos = fotosInput.files;
 
-    // Função para verificar o número de fotos
-    function validarFotos(event) {
-        const arquivos = fotosInput.files;
-        if (arquivos.length < 3) {
-            alert("Você deve selecionar no mínimo 3 fotos.");
-            event.preventDefault();  // Impede o envio do formulário
-        }
+    if (arquivos.length < 1) {
+      alert("Você deve selecionar no mínimo 3 fotos.");
+      return;
     }
 
-    // Adicionar evento de submit ao formulário
-    form.addEventListener("submit", (event) => {
-        validarFotos(event);
-    });
-
-    // Lidar com o logout (simplesmente um exemplo de redirecionamento)
-    logoutBtn.addEventListener("click", () => {
-        window.location.href = "login.html"; 
-    });
-
-
-    // Validação de campos (exemplo de ano, para adicionar mais validações conforme necessário)
-    const anoInput = document.getElementById("ano");
-    anoInput.addEventListener("input", () => {
-        const ano = parseInt(anoInput.value);
-        if (ano < 1900 || ano > new Date().getFullYear()) {
-            anoInput.setCustomValidity("Por favor, insira um ano válido entre 1900 e o ano atual.");
-        } else {
-            anoInput.setCustomValidity("");
+    try {
+      const response = await fetch(
+        "./php/anuncio-controlador.php?acao=cadastrar",
+        {
+          method: "POST",
+          body: formData,
         }
-    });
-});
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao criar anúncio");
+      }
+
+      const result = await response.json();
+      const message = document.getElementById("fail-msg");
+      message.textContent = result.message;
+
+      if (result.success) {
+        message.style.color = "green";
+        form.reset();
+      } else {
+        message.style.color = "red";
+      }
+    } catch (error) {
+      const message = document.getElementById("message");
+      message.textContent = "Erro inesperado. Por favor, tente novamente.";
+      message.style.color = "red";
+    }
+  });

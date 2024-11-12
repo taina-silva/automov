@@ -1,3 +1,13 @@
+<?php
+
+require "./php/conexao_sql.php";
+require "./php/verifica-sessao.php";
+
+session_start();
+verificarSessao();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,10 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../styles/common/general.css">
-    <link rel="stylesheet" type="text/css" href="../styles/common/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../styles/common/form.css">
-    <link rel="stylesheet" href="../styles/cria-anuncio-veiculo.css">
+    <link rel="stylesheet" type="text/css" href="./styles/common/general.css">
+    <link rel="stylesheet" type="text/css" href="./styles/common/navbar.css">
+    <link rel="stylesheet" type="text/css" href="./styles/common/form.css">
+    <link rel="stylesheet" type="text/css" href="./styles/cria-anuncio-veiculo.css">
 
     <title>AutoMov - Criação de Anúncio</title>
 </head>
@@ -17,7 +27,7 @@
 <body>
     <nav class="internal-navbar">
         <div class="internal-container">
-            <img src="../assets/logo/logo.png" alt="AutoMov" class="logo">
+            <img src="./assets/logo/logo.png" alt="AutoMov" class="logo">
             <button id="logout-btn" class="internal-btn">Logout</button>
         </div>
     </nav>
@@ -25,8 +35,7 @@
     <div class="internal-container">
         <div class="internal-form-card">
             <h2>Criação de Anúncio de Veículo</h2>
-            <form action="#" method="POST" enctype="multipart/form-data">
-
+            <form id="form" enctype="multipart/form-data">
                 <label for="marca">Marca do veículo:</label>
                 <input type="text" id="marca" name="marca" required>
 
@@ -83,15 +92,16 @@
                 <label for="cidade">Cidade:</label>
                 <input type="text" id="cidade" name="cidade" required>
 
-                <label for="fotos">Fotos do veículo (mínimo 3):</label>
-                <input type="file" id="fotos" name="fotos[]" accept="image/*" multiple required>
+                <label for="fotos">Selecione os arquivos de imagem:</label>
+                <input type="file" id="fotos" name="fotos[]" accept=".png, .jpg, .jpeg" multiple>
 
+                <p id="message" class="message"></p>
                 <input type="submit" class="internal-btn mt-4" value="Criar Anúncio">
             </form>
         </div>
     </div>
 
-    <script src="../scripts/cria-anuncio-veiculo.js"></script>
+    <script src="./scripts/cria-anuncio-veiculo.js"></script>
 </body>
 
 </html>
