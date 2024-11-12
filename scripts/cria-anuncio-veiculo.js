@@ -6,52 +6,47 @@ logoutBtn.onclick = function () {
   }
 };
 
-const form = document.querySelector("form");
-const fotosInput = document.getElementById("fotos");
-
-form.onsubmit = function (e) {
-  validarFotos(e);
-  tryCriaAnuncioVeiculo(form);
-};
-
-function validarFotos(event) {
-  const arquivos = fotosInput.files;
-  // TODO: não consegui colocar 3 fotos
-  if (arquivos.length < 1) {
-    alert("Você deve selecionar no mínimo 3 fotos.");
+document
+  .getElementById("form")
+  .addEventListener("submit", async function (event) {
     event.preventDefault();
-  }
-}
 
-async function tryCriaAnuncioVeiculo(form) {
-  try {
+    const form = document.getElementById("form");
     const formData = new FormData(form);
 
-    formData.append("marca", document.getElementById("marca").value);
-    formData.append("modelo", document.getElementById("modelo").value);
-    formData.append("ano", document.getElementById("ano").value);
+    const fotosInput = document.getElementById("fotos");
+    const arquivos = fotosInput.files;
 
-    for (let i = 0; i < arquivos.length; i++) {
-      formData.append("fotos[]", arquivos[i]);
+    if (arquivos.length < 1) {
+      alert("Você deve selecionar no mínimo 3 fotos.");
+      return;
     }
 
-    const response = await fetch("../php/cria-anuncio-veiculo.php", {
-      method: "post",
-      body: formData,
-    });
+    try {
+      const response = await fetch("../php/cria-anuncio-veiculo.php", {
+        method: "POST",
+        body: formData,
+      });
 
-    console.log(response);
-    if (!response.ok) throw new Error(response.statusText);
+      if (!response.ok) {
+        throw new Error("Erro ao criar anúncio");
+      }
 
-    const result = await response.json();
-    const message = document.querySelector("#msg");
+      const result = await response.json();
+      const message = document.getElementById("message");
 
-    console.log(result);
+      if (result.success) {
+        message.textContent = "Anúncio criado com sucesso!";
+        message.style.color = "green";
 
-    message.textContent = result.message;
-  } catch (e) {
-    const message = document.querySelector("#msg");
-    message.textContent =
-      "Falha inesperada. Entre em contato o administrador do sistema.";
-  }
-}
+        form.reset(); 
+      } else {
+        message.textContent = result.message;
+        message.style.color = "red";
+      }
+    } catch (error) {
+      const message = document.getElementById("message");
+      message.textContent = "Erro inesperado. Por favor, tente novamente.";
+      message.style.color = "red";
+    }
+  });

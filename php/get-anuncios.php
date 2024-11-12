@@ -2,48 +2,44 @@
 
 require "../php/conexao_sql.php";
 
+// Use PDO for database connection
 $pdo = conectaSql();
 
 $marca = $_GET['marca'] ?? '';
 $modelo = $_GET['modelo'] ?? '';
 $cidade = $_GET['cidade'] ?? '';
 
-$query = "SELECT * FROM Anuncio WHERE 1=1";
+// Start the query with a basic condition to ensure no empty WHERE clause
+$query = "SELECT * FROM anuncio WHERE 1=1";
 $params = [];
-$types = "";
 
 if ($marca) {
-    $query .= " AND Marca = ?";
-    $params[] = $marca;
-    $types .= "s";
+    $query .= " AND marca = :marca";
+    $params[':marca'] = $marca;
 }
 
 if ($modelo) {
-    $query .= " AND Modelo = ?";
-    $params[] = $modelo;
-    $types .= "s";
+    $query .= " AND modelo = :modelo";
+    $params[':modelo'] = $modelo;
 }
 
 if ($cidade) {
-    $query .= " AND Cidade = ?";
-    $params[] = $cidade;
-    $types .= "s";
+    $query .= " AND cidade = :cidade";
+    $params[':cidade'] = $cidade;
 }
 
-$query .= " ORDER BY DataHora DESC LIMIT 20";
-$stmt = $conn->prepare($query);
+$query .= " ORDER BY dataHora DESC LIMIT 20";
 
-if ($params) {
-    $stmt->bind_param($types, ...$params);
-}
+// Prepare the statement
+$stmt = $pdo->prepare($query);
 
-$stmt->execute();
-$result = $stmt->get_result();
+// Execute the query with parameters
+$stmt->execute($params);
 
-$anuncios = [];
-while ($row = $result->fetch_assoc()) {
-    $anuncios[] = $row;
-}
+// Fetch the results
+$anuncios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Return the results as a JSON response
 echo json_encode($anuncios);
+
 ?>

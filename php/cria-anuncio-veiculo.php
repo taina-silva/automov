@@ -1,7 +1,6 @@
 <?php
 
 require "../php/conexao_sql.php";
-require "get-anunciante.php";
 
 class CriaAnuncioVeiculoResponse
 {
@@ -30,20 +29,20 @@ function criarAnuncio($pdo, $marca, $modelo, $ano, $cor, $quilometragem, $descri
 
 function salvarFotos($pdo, $idAnuncio, $arquivos)
 {
-    $diretorio = '../uploads/fotos/';
-    if (!file_exists($diretorio)) {
-        mkdir($diretorio, 0777, true);
-    }
+    // $diretorio = '../uploads/fotos/';
+    // if (!file_exists($diretorio)) {
+    //     mkdir($diretorio, 0777, true);
+    // }
 
-    foreach ($arquivos['name'] as $index => $nomeArqFoto) {
-        $tempFile = $arquivos['tmp_name'][$index];
-        $destino = $diretorio . basename($nomeArqFoto);
+    // foreach ($arquivos['name'] as $index => $nomeArqFoto) {
+    //     $tempFile = $arquivos['tmp_name'][$index];
+    //     $destino = $diretorio . basename($nomeArqFoto);
 
-        if (move_uploaded_file($tempFile, $destino)) {
-            $stmt = $pdo->prepare("INSERT INTO foto (idAnuncio, nomeArqFoto) VALUES (?, ?)");
-            $stmt->execute([$idAnuncio, $nomeArqFoto]);
-        }
-    }
+    //     if (move_uploaded_file($tempFile, $destino)) {
+    //         $stmt = $pdo->prepare("INSERT INTO foto (idAnuncio, nomeArqFoto) VALUES (?, ?)");
+    //         $stmt->execute([$idAnuncio, $nomeArqFoto]);
+    //     }
+    // }
 }
 
 $marca = $_POST['marca'] ?? '';
@@ -60,6 +59,20 @@ $fotos = $_FILES['fotos'] ?? null;
 $pdo = conectaSql();
 
 $idAnunciante = getAnuncianteId($pdo);
+
+function getAnuncianteId($pdo)
+{
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        return null;
+    }
+
+    $email = $_SESSION['user'];
+    $stmt = $pdo->prepare("SELECT id FROM anunciante WHERE email = ?");
+    $stmt->execute([$email]);
+    return $stmt->fetchColumn();
+}
+
 
 if (!$idAnunciante) {
     $response = new CriaAnuncioVeiculoResponse(false, 'Anunciante não encontrado.');

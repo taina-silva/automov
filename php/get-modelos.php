@@ -4,6 +4,8 @@ require "../php/conexao_sql.php";
 
 $pdo = conectaSql();
 
+$marca = $_GET['marca'] ?? '';
+
 try {
     $stmt = $pdo->prepare(
       <<<SQL

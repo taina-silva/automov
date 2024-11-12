@@ -4,9 +4,7 @@ require "../php/conexao_sql.php";
 require "../php/verifica-sessao.php";
 
 session_start();
-
 verificarSessao();
-$pdo = conectaSql();
 
 ?>
 
@@ -37,7 +35,7 @@ $pdo = conectaSql();
     <div class="internal-container">
         <div class="internal-form-card">
             <h2>Criação de Anúncio de Veículo</h2>
-            <form action="../php/cria-anuncio-veiculo.php" method="post" enctype="multipart/form-data">
+            <form id= "form" action="../php/cria-anuncio-veiculo.php" method="post" enctype="multipart/form-data">
 
                 <label for="marca">Marca do veículo:</label>
                 <input type="text" id="marca" name="marca" required>
@@ -98,7 +96,7 @@ $pdo = conectaSql();
                 <label for="fotos">Fotos do veículo (mínimo 3):</label>
                 <input type="file" id="fotos" name="fotos[]" multiple>
 
-                <p id="msg" class="msg"></p>
+                <p id="message" class="message"></p>
                 <input type="submit" class="internal-btn mt-4" value="Criar Anúncio">
             </form>
         </div>

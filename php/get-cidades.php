@@ -4,16 +4,19 @@ require "../php/conexao_sql.php";
 
 $pdo = conectaSql();
 
+$marca = $_GET['marca'] ?? '';
+$modelo = $_GET['modelo'] ?? '';
+
 try {
     $stmt = $pdo->prepare(
       <<<SQL
       SELECT DISTINCT cidade
       FROM anuncio
-      WHERE Marca = ? AND Modelo = ?
+      WHERE marca = ? AND modelo = ?
       SQL
     );
 
-    $stmt->execute([$marca]);
+    $stmt->execute([$marca, $modelo]);
     $cidades = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     header('Content-Type: application/json; charset=utf-8');
