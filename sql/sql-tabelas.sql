@@ -26,7 +26,7 @@ CREATE TABLE anuncio (
 CREATE TABLE foto (
     id INT AUTO_INCREMENT PRIMARY KEY,
     idAnuncio INT NOT NULL,
-    nomeArqFoto VARCHAR(255) NOT NULL,
+    caminho VARCHAR(255) NOT NULL,
     FOREIGN KEY (idAnuncio) REFERENCES anuncio(id)
 );
 

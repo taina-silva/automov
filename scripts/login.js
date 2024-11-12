@@ -1,33 +1,35 @@
-const cadastroForm = document.forms.form;
-cadastroForm.onsubmit = function (e) {
-  e.preventDefault();
-  tryLogin(cadastroForm);
-}
+document
+  .getElementById("form")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-async function tryLogin(form) {
-  try {
-    const response = await fetch("../php/login.php", {
-      method: "post",
-      body: {
-        email: form.email.value,
-        senha: form.senha.value,
-      },
-    });
+    const form = document.getElementById("form");
+    const formData = new FormData(form);
 
-    if (!response.ok) throw new Error(response.statusText);
+    try {
+      const response = await fetch("./php/login.php", {
+        method: "POST",
+        body: formData,
+      });
 
-    const result = await response.json();
+      if (!response.ok) {
+        throw new Error("Erro ao fazer login");
+      }
 
-    if (result.success) window.location = result.location;
-    else {
-      const message = document.querySelector("#fail-msg");
-      message.textContent = "Dados incorretos. Por favor, tente novamente.";
-      form.senha.value = "";
-      form.senha.focus();
+      const result = await response.json();
+
+      const message = document.getElementById("fail-msg");
+      message.textContent = result.message;
+
+      if (result.success) {
+        window.location = result.location;
+      } else {
+        message.style.color = "red";
+      }
+    } catch (error) {
+      const message = document.getElementById("fail-msg");
+      message.textContent = "Erro inesperado. Por favor, tente novamente.";
+      message.style.color = "red";
     }
-  } catch (e) {
-    const message = document.querySelector("#fail-msg");
-    message.textContent =
-      "Falha inesperada. Entre em contato o administrador do sistema.";
   }
-}
+);

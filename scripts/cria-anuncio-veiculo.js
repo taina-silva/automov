@@ -1,6 +1,6 @@
 const logoutBtn = document.querySelector("#logout-btn");
 logoutBtn.onclick = function () {
-  window.location.href = "../php/logout.php";
+  window.location.href = "./php/logout.php";
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
   }
@@ -23,25 +23,26 @@ document
     }
 
     try {
-      const response = await fetch("../php/cria-anuncio-veiculo.php", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "./php/anuncio-controlador.php?acao=cadastrar",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Erro ao criar anúncio");
       }
 
       const result = await response.json();
-      const message = document.getElementById("message");
+      const message = document.getElementById("fail-msg");
+      message.textContent = result.message;
 
       if (result.success) {
-        message.textContent = "Anúncio criado com sucesso!";
         message.style.color = "green";
-
-        form.reset(); 
+        form.reset();
       } else {
-        message.textContent = result.message;
         message.style.color = "red";
       }
     } catch (error) {

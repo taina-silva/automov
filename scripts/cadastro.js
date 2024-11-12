@@ -1,34 +1,35 @@
-const cadastroForm = document.forms.form;
-cadastroForm.onsubmit = function (e) {
-  e.preventDefault();
-  tryCadastro(cadastroForm);
-};
+document
+  .getElementById("form")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-async function tryCadastro(form) {
-  try {
-    const response = await fetch("../php/cadastro.php", {
-      method: "post",
-      body: {
-        nome: form.nome.value,
-        cpf: form.cpf.value.replace(/[.-]/g, ""),
-        email: form.nome.value,
-        senha: form.senha.value,
-        telefone: form.telefone.value,
-      },
-    });
+    const form = document.getElementById("form");
+    const formData = new FormData(form);
 
-    if (!response.ok) throw new Error(response.statusText);
+    try {
+      const response = await fetch("./php/cadastro.php", {
+        method: "POST",
+        body: formData,
+      });
 
-    const result = await response.json();
+      if (!response.ok) {
+        throw new Error("Erro ao cadastrar usuário");
+      }
 
-    if (result.success) window.location = "login.html";
-    else {
-      const message = document.querySelector("#fail-msg");
+      const result = await response.json();
+
+      const message = document.getElementById("fail-msg");
       message.textContent = result.message;
+
+      if (result.success) {
+        window.location.href = "./login.html";
+      } else {
+        message.style.color = "red";
+      }
+    } catch (error) {
+      const message = document.getElementById("fail-msg");
+      message.textContent = "Erro inesperado. Por favor, tente novamente.";
+      message.style.color = "red";
     }
-  } catch (e) {
-    const message = document.querySelector("#fail-msg");
-    message.textContent =
-      "Falha inesperada. Entre em contato o administrador do sistema.";
   }
-}
+);
