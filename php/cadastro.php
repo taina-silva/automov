@@ -1,6 +1,6 @@
 <?php
 
-require "../php/conexao_sql.php";
+require "conexao_sql.php";
 
 class CadastroResponse
 {
@@ -31,6 +31,7 @@ function cadastrarAnunciante($pdo, $nome, $cpf, $email, $senha, $telefone)
 
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
+    $cpf = str_replace(['.', '-'], '', $cpf);
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$nome, $cpf, $email, $senhaHash, $telefone]);
 

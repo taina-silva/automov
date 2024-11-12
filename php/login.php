@@ -1,6 +1,6 @@
 <?php
 
-require "../php/conexao_sql.php";
+require "conexao_sql.php";
 
 class LoginResponse
 {
