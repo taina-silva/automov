@@ -16,9 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function loadMarcas() {
-    fetch("../php/get_marcas.php")
-        .then(response => response.json())
+    fetch("./php/get-marcas.php")
+        .then(response => {
+            console.log(response);
+            if (!response.ok) {
+                throw new Error("Erro na resposta da requisição");
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log(data);
             const marcaSelect = document.getElementById("marca");
             marcaSelect.innerHTML = '<option value="">Selecione a marca</option>';
             data.forEach(marca => {
@@ -27,12 +34,15 @@ function loadMarcas() {
                 option.textContent = marca;
                 marcaSelect.appendChild(option);
             });
+        })
+        .catch(error => {
+            console.error("Erro ao carregar marcas:", error);
         });
 }
 
 function loadModelos(marca) {
     if (!marca) return;
-    fetch(`../php/get_modelos.php?marca=${marca}`)
+    fetch(`./php/get-modelos.php?marca=${marca}`)
         .then(response => response.json())
         .then(data => {
             const modeloSelect = document.getElementById("modelo");
@@ -48,7 +58,7 @@ function loadModelos(marca) {
 
 function loadCidades(marca, modelo) {
     if (!modelo) return;
-    fetch(`../php/get_cidades.php?marca=${marca}&modelo=${modelo}`)
+    fetch(`./php/get-cidades.php?marca=${marca}&modelo=${modelo}`)
         .then(response => response.json())
         .then(data => {
             const cidadeSelect = document.getElementById("cidade");
@@ -67,7 +77,7 @@ function loadAnuncios() {
     const modelo = document.getElementById("modelo").value;
     const cidade = document.getElementById("cidade").value;
 
-    fetch(`../php/get_anuncios.php?marca=${marca}&modelo=${modelo}&cidade=${cidade}`)
+    fetch(`./php/get-anuncios.php?marca=${marca}&modelo=${modelo}&cidade=${cidade}`)
         .then(response => response.json())
         .then(data => {
             const cardsContainer = document.getElementById("cards-container");

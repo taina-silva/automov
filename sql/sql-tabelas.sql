@@ -1,41 +1,41 @@
-CREATE TABLE Anunciante (
-    Id INT PRIMARY KEY,
-    Nome VARCHAR(100) NOT NULL,
-    CPF VARCHAR(11) UNIQUE NOT NULL,
-    Email VARCHAR(100) UNIQUE NOT NULL,
-    SenhaHash VARCHAR(255) NOT NULL,
-    Telefone VARCHAR(15)
+CREATE TABLE anunciante (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    telefone VARCHAR(15) NOT NULL
 );
 
-CREATE TABLE Anuncio (
-    Id INT PRIMARY KEY,
-    Marca VARCHAR(50) NOT NULL,
-    Modelo VARCHAR(50) NOT NULL,
-    Ano INT NOT NULL,
-    Cor VARCHAR(20),
-    Quilometragem INT,
-    Descricao TEXT,
-    Valor DECIMAL(10, 2),
-    DataHora DATETIME NOT NULL,
-    Estado VARCHAR(2),
-    Cidade VARCHAR(100),
-    IdAnunciante INT NOT NULL,
-    FOREIGN KEY (IdAnunciante) REFERENCES Anunciante(Id)
+CREATE TABLE anuncio (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    ano INT NOT NULL,
+    cor VARCHAR(20),
+    quilometragem INT,
+    descricao TEXT,
+    valor DECIMAL(10, 2),
+    dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(2),
+    cidade VARCHAR(100),
+    idAnunciante INT NOT NULL,
+    FOREIGN KEY (idAnunciante) REFERENCES anunciante(id)
 );
 
-CREATE TABLE Foto (
-    Id INT PRIMARY KEY,
-    IdAnuncio INT NOT NULL,
-    NomeArqFoto VARCHAR(255) NOT NULL,
-    FOREIGN KEY (IdAnuncio) REFERENCES Anuncio(Id)
+CREATE TABLE foto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    idAnuncio INT NOT NULL,
+    nomeArqFoto VARCHAR(255) NOT NULL,
+    FOREIGN KEY (idAnuncio) REFERENCES anuncio(id)
 );
 
-CREATE TABLE Interesse (
-    Id INT PRIMARY KEY,
-    Nome VARCHAR(100) NOT NULL,
-    Telefone VARCHAR(15),
-    Mensagem TEXT,
-    DataHora DATETIME NOT NULL,
-    IdAnuncio INT NOT NULL,
-    FOREIGN KEY (IdAnuncio) REFERENCES Anuncio(Id)
+CREATE TABLE interesse (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15),
+    mensagem TEXT,
+    dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    idAnuncio INT NOT NULL,
+    FOREIGN KEY (idAnuncio) REFERENCES anuncio(id)
 );

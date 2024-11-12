@@ -1,5 +1,8 @@
 <?php
-include 'db_connection.php';
+
+require "../php/conexao_sql.php";
+
+$pdo = conectaSql();
 
 $marca = $_GET['marca'] ?? '';
 $modelo = $_GET['modelo'] ?? '';

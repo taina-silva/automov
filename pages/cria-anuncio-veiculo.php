@@ -1,3 +1,15 @@
+<?php
+
+require "../php/conexao_sql.php";
+require "../php/verifica-sessao.php";
+
+session_start();
+
+verificarSessao();
+$pdo = conectaSql();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -25,7 +37,7 @@
     <div class="internal-container">
         <div class="internal-form-card">
             <h2>Criação de Anúncio de Veículo</h2>
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form action="../php/cria-anuncio-veiculo.php" method="post" enctype="multipart/form-data">
 
                 <label for="marca">Marca do veículo:</label>
                 <input type="text" id="marca" name="marca" required>
@@ -84,8 +96,9 @@
                 <input type="text" id="cidade" name="cidade" required>
 
                 <label for="fotos">Fotos do veículo (mínimo 3):</label>
-                <input type="file" id="fotos" name="fotos[]" accept="image/*" multiple required>
+                <input type="file" id="fotos" name="fotos[]" multiple>
 
+                <p id="msg" class="msg">asdasaaa</p>
                 <input type="submit" class="internal-btn mt-4" value="Criar Anúncio">
             </form>
         </div>

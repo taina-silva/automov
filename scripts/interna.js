@@ -94,5 +94,5 @@ logoutBtn.onclick = function () {
 
 const novoAnunctionBtn = document.querySelector("#novo-anuncio-btn");
 novoAnunctionBtn.onclick = function () {
-  window.location.href = "cria-anuncio-veiculo.html";
+  window.location.href = "cria-anuncio-veiculo.php";
 };
