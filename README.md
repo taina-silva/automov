@@ -21,8 +21,8 @@ PHP Backend + scripts
 - [] 3.6 Página para Criação de Anúncio de Veículo (restrita)
 - [] 3.7 Página de Listagem de Anúncios (restrita)
 - [] 3.8 Página para Exibição Detalhada do Anúncio (restrita)
-- [] 3.9 Página de Listagem de Interesses (restrita) (Necessário validação)
-- [] 3.10 Busca Pagina principal(pública) (Necessário Validação)
+- [X] 3.9 Página de Listagem de Interesses (restrita) (Necessário validação)
+- [X] 3.10 Busca Pagina principal(pública) (Necessário Validação)
 - [] 3.11 Cadastro de Anunciante
 - [] 3.12 Cadastro de Anúncio
 - [] 3.13 Login
