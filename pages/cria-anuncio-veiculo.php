@@ -98,7 +98,7 @@ $pdo = conectaSql();
                 <label for="fotos">Fotos do veículo (mínimo 3):</label>
                 <input type="file" id="fotos" name="fotos[]" multiple>
 
-                <p id="msg" class="msg">asdasaaa</p>
+                <p id="msg" class="msg"></p>
                 <input type="submit" class="internal-btn mt-4" value="Criar Anúncio">
             </form>
         </div>
