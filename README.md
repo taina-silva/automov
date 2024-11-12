@@ -23,7 +23,7 @@ PHP Backend + scripts
 - [] 3.8 Página para Exibição Detalhada do Anúncio (restrita)
 - [X] 3.9 Página de Listagem de Interesses (restrita) (Necessário validação)
 - [X] 3.10 Busca Pagina principal(pública) (Necessário Validação)
-- [] 3.11 Cadastro de Anunciante
+- [X] 3.11 Cadastro de Anunciante
 - [] 3.12 Cadastro de Anúncio
-- [] 3.13 Login
+- [X] 3.13 Login
 - [X] 3.14 Tabelas SQL
