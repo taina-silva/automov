@@ -46,8 +46,9 @@ document
         message.style.color = "red";
       }
     } catch (error) {
-      const message = document.getElementById("message");
-      message.textContent = "Erro inesperado. Por favor, tente novamente.";
-      message.style.color = "red";
+      //const message = document.getElementById("message");
+      //message.textContent = "Erro inesperado. Por favor, tente novamente.";
+      //message.style.color = "red";
     }
   });
+

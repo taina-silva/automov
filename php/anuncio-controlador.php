@@ -109,6 +109,7 @@ function getAnuncianteId($pdo)
     return $stmt->fetchColumn();
 }
 
+/* FUNÇÃO SALVAR FOTOS ANTIGA
 function salvarFotos($pdo, $idAnuncio, $arquivos) {
     $diretorioDestino = '../uploads/';
 
@@ -142,5 +143,46 @@ function salvarFotos($pdo, $idAnuncio, $arquivos) {
         // }
     }
 }
+
+?>
+*/
+
+
+
+//fUNÇÃO SALVAR FOTOS NOVA:
+function salvarFotos($pdo, $idAnuncio, $arquivos) {
+    $diretorioDestino = '../uploads/';
+
+    // Cria a pasta de uploads, se ela não existir
+    if (!is_dir($diretorioDestino)) {
+        mkdir($diretorioDestino, 0777, true);
+    }
+
+    foreach ($arquivos['name'] as $key => $nomeArquivo) {
+        // Verifica se não houve erro no upload
+        if ($arquivos['error'][$key] === UPLOAD_ERR_OK) {
+            $caminhoTemporario = $arquivos['tmp_name'][$key];
+            $caminhoDestino = $diretorioDestino . uniqid() . '-' . basename($nomeArquivo);
+
+            // Move o arquivo para o diretório de destino
+            if (move_uploaded_file($caminhoTemporario, $caminhoDestino)) {
+                // Insere o caminho no banco apenas se o arquivo foi movido com sucesso
+                $sql = "INSERT INTO foto (idAnuncio, caminho) VALUES (:idAnuncio, :caminho)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':idAnuncio', $idAnuncio, PDO::PARAM_INT);
+                $stmt->bindParam(':caminho', $caminhoDestino, PDO::PARAM_STR);
+                $stmt->execute();
+            } else {
+                // Mensagem de erro se o arquivo não puder ser movido
+                echo "Erro ao mover o arquivo $nomeArquivo.";
+            }
+        } else {
+            // Mensagem de erro de upload
+            echo "Erro no upload do arquivo $nomeArquivo.";
+        }
+    }
+}
+
+//header("Location : '../interna.php");
 
 ?>
